@@ -1,9 +1,7 @@
-import pyscreenshot as ImageGrab
-import subprocess
-import os
-import time
 import tkinter as tk
 from datetime import datetime
+from temp_file_manager import create_temp_file, remove_temp_files
+from ffmpeg_encoder import encode_frames_to_video
 
 class ScreenRecorderApp:
     def __init__(self, frame_rate, output_file):
@@ -43,38 +41,25 @@ class ScreenRecorderApp:
             sleep_duration = max(0, (1.0 / self.frame_rate) - elapsed_time)
             time.sleep(sleep_duration)
 
-
     def encode_frames_to_video(self):
         temp_files = []
         for i, frame in enumerate(self.frames):
-            temp_file = f'temp_{i}.png'
-            frame.save(temp_file)
+            temp_file = create_temp_file(frame, i)
             temp_files.append(temp_file)
 
-        ffmpeg_command = [
-            'ffmpeg',
-            '-y',
-            '-framerate', str(self.frame_rate),
-            '-i', 'temp_%d.png',
-            '-c:v', 'libx264',
-            '-crf', '18',
-            '-pix_fmt', 'yuv420p',
-            '-vf', 'pad=ceil(iw/2)*2:ceil(ih/2)*2',
-            '-movflags', '+faststart',
-            output_file
-        ]
+        encode_frames_to_video(self.frame_rate, self.output_file, temp_files)
 
-        subprocess.call(ffmpeg_command)
+        remove_temp_files(temp_files)
 
-        for temp_file in temp_files:
-            os.remove(temp_file)
+def main():
+    frame_rate = 3
 
+    now = datetime.now()
+    date_time = now.strftime("%H%M%d%m%y")
 
-frame_rate = 3 
+    output_file = f'screen_recording_{date_time}.mkv'
 
-now = datetime.now()
-date_time = now.strftime("%H%M%d%m%y")
+    app = ScreenRecorderApp(frame_rate, output_file)
 
-output_file = f'screen_recording_{date_time}.mkv'
-
-app = ScreenRecorderApp(frame_rate, output_file)
+if __name__ == "__main__":
+    main()
