@@ -3,6 +3,7 @@
 The Midnight Capture is a screen recording application developed by a college student, created during the late hours of the night. This project was born out of the need for a reliable screen recording solution for Linux when other options like OBS and Kazam presented issues.
 
 ## Introduction
+
 The Midnight Capture provides a simple and efficient way to record your screen, allowing you to capture and save important moments or create instructional videos. With its intuitive interface and straightforward functionality, this application aims to meet your screen recording needs.
 
 ## Features
@@ -15,25 +16,25 @@ The Midnight Capture provides a simple and efficient way to record your screen, 
 
 ## Installation
 
-1. Clone the repository: 
-    ```bash
-    git clone https://github.com/jaywyawhare/The-Midnight-Capture.git
-    ```
-1. Navigate to the project directory: 
-    ```bash
-    cd the-midnight-capture
-    ```
-1. Install the required dependencies: 
-    ```bash
-    pip install -r requirements.txt
-    ```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jaywyawhare/The-Midnight-Capture.git
+   ```
+1. Navigate to the project directory:
+   ```bash
+   cd the-midnight-capture
+   ```
+1. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
-1. Run the application: 
-    ```bash
-    python screen_recorder.py
-    ```
+1. Run the application:
+   ```bash
+   python src/screen_recorder.py
+   ```
 1. Click the "Start Recording" button to begin capturing your screen.
 1. To stop the recording, click the "Stop Recording" button.
 1. The captured video will be saved in the project directory with a unique timestamp.
@@ -47,9 +48,11 @@ The Midnight Capture is a project created by a college student during the late h
 Contributions to The Midnight Capture are always appreciated. If you encounter any bugs, have suggestions for improvement, or would like to add new features, please feel free to open an issue or submit a pull request. Together, we can make this screen recording application even better.
 
 ## License
+
 The Midnight Capture is released under the MIT License.
 
 ## Acknowledgments
+
 Special thanks to the open-source community for providing resources and inspiration to develop this screen recording application.
 
-*Note: The Midnight Capture is a project developed by a college student at 3 a.m., which reflects the determination and passion for finding a reliable screen recording solution.*
+_Note: The Midnight Capture is a project developed by a college student at 3 a.m., which reflects the determination and passion for finding a reliable screen recording solution._
